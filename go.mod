@@ -5,7 +5,9 @@ go 1.19
 require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.13
 	github.com/izaakdale/lib v0.0.0-20230209115250-eede945fb3cc
+	github.com/izaakdale/service-event-order v0.0.0-20230225180852-deb1751b6681
 	github.com/kelseyhightower/envconfig v1.4.0
+	google.golang.org/grpc v1.53.0
 )
 
 require (
@@ -21,4 +23,10 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.14.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.18.3 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
+	golang.org/x/net v0.5.0 // indirect
+	golang.org/x/sys v0.4.0 // indirect
+	golang.org/x/text v0.6.0 // indirect
+	google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f // indirect
+	google.golang.org/protobuf v1.28.1 // indirect
 )
