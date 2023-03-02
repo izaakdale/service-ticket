@@ -4,4 +4,6 @@ run:
 	AWS_ENDPOINT=http://localhost:4566 \
 	GRPC_HOST=localhost \
 	GRPC_PORT=50002 \
+	MAIL_HOST=localhost \
+	MAIL_PORT=1025 \
 	go run .

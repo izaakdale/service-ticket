@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/izaakdale/lib/listener"
+	"github.com/izaakdale/service-ticket/internal/mailer"
 
 	"github.com/izaakdale/service-event-order/pkg/notifications"
 	"github.com/izaakdale/service-event-order/pkg/proto/order"
@@ -25,8 +26,10 @@ func Process(m listener.Message) error {
 		return err
 	}
 
-	log.Printf("%+v\n", o)
-	// compose email
-	// send
+	err = mailer.Send(o.Email, o.Tickets)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
