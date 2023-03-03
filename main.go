@@ -1,18 +1,8 @@
 package main
 
-import (
-	"github.com/izaakdale/service-ticket/internal/app"
-)
+import "github.com/izaakdale/service-ticket/internal/app"
 
 func main() {
-	// mailer.Send([]order.Ticket{
-	// 	{
-	// 		FirstName:  "izaak",
-	// 		Surname:    "dale",
-	// 		QrPath:     "testpath",
-	// 		TicketType: "adult",
-	// 	},
-	// })
-
 	app.Run()
+	// qrcode.WriteFile("hello", qrcode.Medium, 256, "test.png")
 }

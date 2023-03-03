@@ -2,8 +2,9 @@ package mailer
 
 import (
 	"bytes"
-	"html/template"
+	"fmt"
 	"log"
+	"text/template"
 	"time"
 
 	"github.com/izaakdale/service-event-order/pkg/proto/order"
@@ -54,6 +55,10 @@ func Send(recipient string, tickets []*order.Ticket) error {
 	email := mail.NewMSG()
 	email.SetFrom("awesome_tickets@test.com").AddTo(recipient).SetSubject("your tickets...")
 	email.AddAlternative(mail.TextHTML, fmtd)
+
+	for k, v := range tickets {
+		email.AddAttachment(fmt.Sprintf("tmp/%s.jpg", v.TicketId), fmt.Sprintf("ticket#%d", k+1))
+	}
 
 	err = email.Send(client)
 	if err != nil {

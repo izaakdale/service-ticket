@@ -8,9 +8,10 @@
     </head>
     <body>
         {{range .tickets}}
-            <p>{{.FirstName}}<p>
-            <p>{{.TicketId}}
-            {{/* <img src="{{.TicketId}}.jpg" alt="Girl in a jacket" width="500" height="600"> */}}
+            <p>Name: {{.FirstName}} {{.Surname}}<p>
+            <p>Ticket Number: {{.TicketId}}<p>
+            <p>Ticket Type: {{.TicketType}}<p>
+            {{/* <img src={{printf "cid:tmp/%s.jpg" .TicketId}}></img> */}}
         {{end}}
     </body>
 </html>

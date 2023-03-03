@@ -7,6 +7,7 @@ require (
 	github.com/izaakdale/lib v0.0.0-20230209115250-eede945fb3cc
 	github.com/izaakdale/service-event-order v0.0.0-20230302205242-cba61dbe1f00
 	github.com/kelseyhightower/envconfig v1.4.0
+	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	github.com/vanng822/go-premailer v1.20.1
 	github.com/xhit/go-simple-mail v2.2.2+incompatible
 	google.golang.org/grpc v1.53.0
