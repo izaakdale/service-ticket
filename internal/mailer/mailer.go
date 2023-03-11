@@ -56,8 +56,8 @@ func Send(recipient string, tickets []*order.Ticket) error {
 	email.SetFrom("awesome_tickets@test.com").AddTo(recipient).SetSubject("your tickets...")
 	email.AddAlternative(mail.TextHTML, fmtd)
 
-	for k, v := range tickets {
-		email.AddAttachment(fmt.Sprintf("tmp/%s.jpg", v.TicketId), fmt.Sprintf("ticket#%d", k+1))
+	for _, v := range tickets {
+		email.AddAttachment(fmt.Sprintf("tmp/%s.jpg", v.TicketId), fmt.Sprintf("ticket#%s", v.TicketId))
 	}
 
 	err = email.Send(client)

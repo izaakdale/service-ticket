@@ -7,9 +7,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/izaakdale/lib/listener"
+	"github.com/izaakdale/lib/server"
 	"github.com/izaakdale/service-event-order/pkg/proto/order"
 	"github.com/kelseyhightower/envconfig"
 	"google.golang.org/grpc"
@@ -23,6 +25,8 @@ var (
 )
 
 type specification struct {
+	Host        string `envconfig:"HOST"`
+	Port        string `envconfig:"PORT"`
 	AWSRegion   string `envconfig:"AWS_REGION"`
 	QueueURL    string `envconfig:"QUEUE_URL"`
 	AWSEndpoint string `envconfig:"AWS_ENDPOINT"`
@@ -56,6 +60,17 @@ func Run() {
 	if err != nil {
 		panic(err)
 	}
+
+	srv, err := server.New(
+		Router(),
+		server.WithHost(spec.Host),
+		server.WithPort(spec.Port),
+		server.WithTimeouts(time.Second, time.Second))
+	if err != nil {
+		panic(err)
+	}
+
+	go srv.ListenAndServe()
 
 	errChan := make(chan error, 0)
 
