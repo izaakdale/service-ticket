@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.16
-	github.com/izaakdale/lib v0.0.0-20230209115250-eede945fb3cc
+	github.com/izaakdale/lib v0.0.0-20230313214023-62e06ee358a9
 	github.com/izaakdale/service-event-order v0.0.0-20230311072212-2f7bcbb31e08
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/kelseyhightower/envconfig v1.4.0

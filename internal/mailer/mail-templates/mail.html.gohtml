@@ -7,11 +7,13 @@
         <title></title>
     </head>
     <body>
+        <h1>Order: {{.order}}</h1>
         {{range .tickets}}
+            <p>---------------------------------------------------------</p>
             <p>Name: {{.FirstName}} {{.Surname}}<p>
             <p>Ticket Number: {{.TicketId}}<p>
             <p>Ticket Type: {{.TicketType}}<p>
-            {{/* <img src={{printf "cid:tmp/%s.jpg" .TicketId}}></img> */}}
+            <p>---------------------------------------------------------</p>
         {{end}}
     </body>
 </html>

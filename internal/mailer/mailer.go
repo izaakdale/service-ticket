@@ -46,8 +46,8 @@ func init() {
 	}
 }
 
-func Send(recipient string, tickets []*order.Ticket) error {
-	fmtd, err := buildHTMLMessage(tickets)
+func Send(recipient, orderID string, tickets []*order.Ticket) error {
+	fmtd, err := buildHTMLMessage(orderID, tickets)
 	if err != nil {
 		return err
 	}
@@ -68,7 +68,7 @@ func Send(recipient string, tickets []*order.Ticket) error {
 	return nil
 }
 
-func buildHTMLMessage(tickets []*order.Ticket) (string, error) {
+func buildHTMLMessage(orderID string, tickets []*order.Ticket) (string, error) {
 	templateToRender := "./internal/mailer/mail-templates/mail.html.gohtml"
 
 	t, err := template.New("email-html").ParseFiles(templateToRender)
@@ -78,6 +78,7 @@ func buildHTMLMessage(tickets []*order.Ticket) (string, error) {
 	}
 
 	data := map[string]any{
+		"order":   orderID,
 		"tickets": tickets,
 	}
 

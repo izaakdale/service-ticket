@@ -15,7 +15,7 @@ import (
 	"github.com/izaakdale/service-event-order/pkg/proto/order"
 )
 
-func Process(m listener.Message) error {
+func Process(ctx context.Context, m listener.Message) error {
 	log.Printf("processing message from queue %s\n", m.MessageID)
 	// decode message
 	var payload notifications.OrderStoredPayload
@@ -24,7 +24,7 @@ func Process(m listener.Message) error {
 		return err
 	}
 	// fetch order tickets
-	o, err := client.GetOrder(context.Background(), &order.OrderRequest{OrderId: payload.OrderID})
+	o, err := client.GetOrder(ctx, &order.OrderRequest{OrderId: payload.OrderID})
 	if err != nil {
 		return err
 	}
@@ -36,7 +36,7 @@ func Process(m listener.Message) error {
 		}
 	}
 
-	err = mailer.Send(o.Email, o.Tickets)
+	err = mailer.Send(o.Email, payload.OrderID, o.Tickets)
 	if err != nil {
 		return err
 	}

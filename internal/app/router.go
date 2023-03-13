@@ -8,7 +8,7 @@ import (
 
 func Router() http.Handler {
 	r := router.New(
-		router.WithRoute(http.MethodPost, "/qr/:id", ScanHandler),
+		router.WithRoute(http.MethodGet, "/qr/:id", ScanHandler),
 	)
 	return r
 }

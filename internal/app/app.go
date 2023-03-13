@@ -35,13 +35,17 @@ type specification struct {
 }
 
 func Run() {
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
 	err := envconfig.Process("", &spec)
 	if err != nil {
 		panic(err)
 	}
 
 	log.Printf("running %s\n", name)
-	cfg, err := config.LoadDefaultConfig(context.Background(), func(o *config.LoadOptions) error {
+	cfg, err := config.LoadDefaultConfig(ctx, func(o *config.LoadOptions) error {
 		o.Region = spec.AWSRegion
 		return nil
 	})
@@ -74,7 +78,7 @@ func Run() {
 
 	errChan := make(chan error, 0)
 
-	go listener.Listen(Process, errChan)
+	go listener.Listen(ctx, Process, errChan)
 
 	shutCh := make(chan os.Signal, 1)
 	signal.Notify(shutCh, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
