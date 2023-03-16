@@ -3,9 +3,9 @@ module github.com/izaakdale/service-ticket
 go 1.20
 
 require (
-	github.com/aws/aws-sdk-go-v2/config v1.18.16
-	github.com/izaakdale/lib v0.0.0-20230313214023-62e06ee358a9
-	github.com/izaakdale/service-event-order v0.0.0-20230311072212-2f7bcbb31e08
+	github.com/aws/aws-sdk-go-v2/config v1.18.18
+	github.com/izaakdale/lib v0.0.0-20230316215029-1dd92c03467d
+	github.com/izaakdale/service-event-order v0.0.0-20230313222852-0f4e8da7a39f
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
@@ -18,8 +18,8 @@ require (
 	github.com/PuerkitoBio/goquery v1.8.1 // indirect
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.6 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.13.16 // indirect
-	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.24 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.13.17 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.0 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.30 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.24 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.31 // indirect
@@ -36,5 +36,5 @@ require (
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
 	google.golang.org/genproto v0.0.0-20230306155012-7f2fa6fef1f4 // indirect
-	google.golang.org/protobuf v1.29.0 // indirect
+	google.golang.org/protobuf v1.30.0 // indirect
 )
