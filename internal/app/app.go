@@ -35,7 +35,6 @@ type specification struct {
 }
 
 func Run() {
-
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
@@ -44,7 +43,6 @@ func Run() {
 		panic(err)
 	}
 
-	log.Printf("running %s\n", name)
 	cfg, err := config.LoadDefaultConfig(ctx, func(o *config.LoadOptions) error {
 		o.Region = spec.AWSRegion
 		return nil
@@ -66,6 +64,7 @@ func Run() {
 	}
 
 	srv, err := server.New(
+		name,
 		Router(),
 		server.WithHost(spec.Host),
 		server.WithPort(spec.Port),
@@ -74,7 +73,7 @@ func Run() {
 		panic(err)
 	}
 
-	go srv.ListenAndServe()
+	go srv.Run()
 
 	errChan := make(chan error, 0)
 
