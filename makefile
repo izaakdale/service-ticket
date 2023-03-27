@@ -20,3 +20,6 @@ run_local:
 	MAIL_HOST=localhost \
 	MAIL_PORT=1025 \
 	go run .
+
+build:
+	docker build --tag izaakdale/service-ticket .
