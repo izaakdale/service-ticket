@@ -68,7 +68,9 @@ func Run() {
 		Router(),
 		server.WithHost(spec.Host),
 		server.WithPort(spec.Port),
-		server.WithTimeouts(time.Second, time.Second))
+		server.WithTimeouts(time.Second, time.Second),
+		server.WithTimeoutHandler(time.Second, "timeout!"),
+	)
 	if err != nil {
 		panic(err)
 	}
